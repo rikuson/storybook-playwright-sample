@@ -1,5 +1,11 @@
 # Storybook Playwright Sample
 
+## Installation
+
+```shell
+yarn
+```
+
 ## Start server
 
 ```shell
