@@ -1,4 +1,6 @@
 import { Button } from './Button';
+import { expect } from "@storybook/jest";
+import { within } from "@storybook/testing-library";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
@@ -7,6 +9,10 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     backgroundColor: { control: 'color' },
+  },
+  play: ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(canvas.getByRole("button")).toBeTruthy();
   },
 };
 
