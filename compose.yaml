@@ -1,0 +1,8 @@
+version: "3.5"
+
+services:
+  storybook:
+    build: .
+    volumes:
+      - ./src:/app/src
+      - ./__snapshots__:/app/__snapshots__
