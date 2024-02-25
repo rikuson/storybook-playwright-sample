@@ -8,20 +8,8 @@ jobs:
       matrix:
         node-version: [18, 20]
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v2
+      - uses: reg-viz/reg-actions@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: yarn && yarn playwright install
-      - name: Start Storybook
-        run: yarn storybook & # FIXME: Build storybook and use http-server module for the performance
-      - name: Run Storybook tests
-        run: yarn test-storybook
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: snapshot_diffs
-          path: __snapshots__/__diff_output__
-          retention-days: 30
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          image-directory-path: __snapshots__
